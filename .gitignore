@@ -22,3 +22,6 @@ dist/
 
 # Windows system files
 Thumbs.db
+
+# Ignore chat session logs
+session_logs/
