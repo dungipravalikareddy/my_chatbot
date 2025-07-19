@@ -1,8 +1,16 @@
 from chat.service.chat_service import ChatService
 from config import cfg
+import os
+
 
 def main():
     print("=== Welcome to Mystic Bot 🤖✨ ===")
+
+    # Week 2 Stretch: User authentication for private logs
+    username = input("Enter your username: ").strip()
+    os.makedirs('logs', exist_ok=True)
+    log_file = f"logs/{username}_log.txt"
+
     print("Choose your bot style:")
     print("1. Normal Assistant")
     print("2. Sarcastic Assistant")
@@ -21,8 +29,8 @@ def main():
     # Fun initial greeting
     print(f"Bot: {system_prompt} Hey there, curious mind! 🌟 What would you like to explore today?")
 
-    # Pass chosen system prompt to ChatService for dynamic behaviour
-    bot = ChatService(system_prompt)
+    # Pass chosen system prompt to ChatService for dynamic behaviour and user log file to ChatService
+    bot = ChatService(system_prompt, log_file)
 
     # Chat loop
     while True:
